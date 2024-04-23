@@ -16,10 +16,10 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.8
     - pip
   run:
-    - python >=3.7
+    - python >=3.8
     - __linux  # [linux]
     - __osx    # [osx]
     - __win    # [win]
@@ -27,9 +27,8 @@ requirements:
     - python-xlib >=0.21  # [linux]
     - pyobjc-core >=8.1  # [osx]
     - typing_extensions >=4.4.0
-    - pywinbox >=0.6
-    - pymonctl >=0.6
-
+    - pywinbox >=0.7
+    - pymonctl >=0.92
 test:
   commands:
     - "DISPLAY=localhost:1.0 XDG_SESSION_TYPE=x11 xvfb-run -a python -c 'import pywinctl'"  # [linux]
