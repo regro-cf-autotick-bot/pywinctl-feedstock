@@ -1,5 +1,5 @@
 {% set name = "PyWinCtl" %}
-{% set version = "0.3" %}
+{% set version = "0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,19 +7,19 @@ package:
 
 source:
   url: https://github.com/Kalmat/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c0a757530e21f7fb744c2546a40e1b73c75945b90a3f319844542b7290610b23
+  sha256: 959646f9a3f9a47029ce21e9c878abf64406f0c24ba5969143f1226c24c937c5
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.8
     - pip
   run:
-    - python >=3.7
+    - python >=3.8
     - __linux  # [linux]
     - __osx    # [osx]
     - __win    # [win]
@@ -27,9 +27,8 @@ requirements:
     - python-xlib >=0.21  # [linux]
     - pyobjc-core >=8.1  # [osx]
     - typing_extensions >=4.4.0
-    - pywinbox >=0.6
-    - pymonctl >=0.6
-
+    - pywinbox >=0.7
+    - pymonctl >=0.92
 test:
   commands:
     - "DISPLAY=localhost:1.0 XDG_SESSION_TYPE=x11 xvfb-run -a python -c 'import pywinctl'"  # [linux]
