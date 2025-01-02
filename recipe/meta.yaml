@@ -10,16 +10,16 @@ source:
   sha256: cafbe7869526700542431025761adb172b78a4be580ddaec42140d677c8b9df9
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - __linux  # [linux]
     - __osx    # [osx]
     - __win    # [win]
@@ -30,6 +30,8 @@ requirements:
     - pywinbox >=0.7
     - pymonctl >=0.92
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - "DISPLAY=localhost:1.0 XDG_SESSION_TYPE=x11 xvfb-run -a python -c 'import pywinctl'"  # [linux]
   imports:
